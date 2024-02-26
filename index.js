@@ -14,17 +14,25 @@ let scissorsButton = document.querySelector('#scissors');
 let results = document.querySelector('.results');
 let resultCounter = document.createElement('span');
 resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
+let roundWinner = document.createElement('p');
+roundWinner.textContent = ``;
+results.appendChild(roundWinner);
 results.appendChild(resultCounter);
 
 function playerPicksRock() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
+    roundWinner.textContent = 'Tie. You picked Rock, Computer picked Rock.';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${++ties};`;
   } else if (computerChoice === 'paper') {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You lose. You picked Rock, Computer picked Paper.';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${++computerScore}; Ties: ${ties};`;
   } else {
-    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You win! You picked Rock, Computer picked Scissors';
+    resultCounter.textContent = `Wins: ${++playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
   }
 }
 
@@ -32,11 +40,16 @@ function playerPicksPaper() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You win! You picked Paper, Computer picked Rock.';
+    resultCounter.textContent = `Wins: ${++playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
   } else if (computerChoice === 'paper') {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
+    roundWinner.textContent = 'Tie. You picked Paper, Computer picked Paper.';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${++ties};`;
   } else {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You lose. You picked Paper, Computer picked Scissors';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${++computerScore}; Ties: ${ties};`;
   }
 }
 
@@ -44,11 +57,17 @@ function playerPicksScissors() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You lose. You picked Scissors, Computer picked Rock.';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${++computerScore}; Ties: ${ties};`;
   } else if (computerChoice === 'paper') {
-    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
+    roundWinner.textContent =
+      'You win! You picked Scissors, Computer picked Paper.';
+    resultCounter.textContent = `Wins: ${++playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
   } else {
-    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
+    roundWinner.textContent =
+      'Tie. You picked Scissors, Computer picked Scissors';
+    resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${++ties};`;
   }
 }
 
