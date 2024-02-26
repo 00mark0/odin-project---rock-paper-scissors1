@@ -5,19 +5,26 @@ function getComputerChoice() {
   return computerChoice[randomNumber];
 }
 
+let playerScore = 0;
+let computerScore = 0;
+let ties = 0;
 let rockButton = document.querySelector('#rock');
 let paperButton = document.querySelector('#paper');
 let scissorsButton = document.querySelector('#scissors');
+let results = document.querySelector('.results');
+let resultCounter = document.createElement('span');
+resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
+results.appendChild(resultCounter);
 
 function playerPicksRock() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    console.log('Tie!');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
   } else if (computerChoice === 'paper') {
-    console.log('You lose.');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
   } else {
-    console.log('You win!');
+    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
   }
 }
 
@@ -25,11 +32,11 @@ function playerPicksPaper() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    console.log('You lose.');
+    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
   } else if (computerChoice === 'paper') {
-    console.log('Tie!');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
   } else {
-    console.log('You win!');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
   }
 }
 
@@ -37,11 +44,11 @@ function playerPicksScissors() {
   let computerChoice = getComputerChoice();
 
   if (computerChoice === 'rock') {
-    console.log('You lose.');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore++}; Ties: ${ties};`);
   } else if (computerChoice === 'paper') {
-    console.log('You win!');
+    return (resultCounter.textContent = `Wins: ${playerScore++}; Losses: ${computerScore}; Ties: ${ties};`);
   } else {
-    console.log('Tie!');
+    return (resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties++};`);
   }
 }
 
