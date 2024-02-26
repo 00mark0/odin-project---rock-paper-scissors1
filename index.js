@@ -16,6 +16,7 @@ let resultCounter = document.createElement('span');
 resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
 let roundWinner = document.createElement('p');
 roundWinner.textContent = ``;
+let gameWinnerDiv = document.querySelector('.game-winner');
 results.appendChild(roundWinner);
 results.appendChild(resultCounter);
 
@@ -34,6 +35,8 @@ function playerPicksRock() {
       'You win! You picked Rock, Computer picked Scissors';
     resultCounter.textContent = `Wins: ${++playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
   }
+
+  gameWinner();
 }
 
 function playerPicksPaper() {
@@ -51,6 +54,8 @@ function playerPicksPaper() {
       'You lose. You picked Paper, Computer picked Scissors';
     resultCounter.textContent = `Wins: ${playerScore}; Losses: ${++computerScore}; Ties: ${ties};`;
   }
+
+  gameWinner();
 }
 
 function playerPicksScissors() {
@@ -69,11 +74,49 @@ function playerPicksScissors() {
       'Tie. You picked Scissors, Computer picked Scissors';
     resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${++ties};`;
   }
+
+  gameWinner();
+}
+
+function gameWinner() {
+  let declareWinner = document.createElement('h3');
+
+  if (playerScore === 5) {
+    declareWinner.textContent = 'You won the game! Congratulations!';
+    gameWinnerDiv.appendChild(declareWinner);
+    document.querySelector('#reset').style.display = 'block';
+    rockButton.removeEventListener('click', playerPicksRock);
+    paperButton.removeEventListener('click', playerPicksPaper);
+    scissorsButton.removeEventListener('click', playerPicksScissors);
+  } else if (computerScore === 5) {
+    declareWinner.textContent = 'You lost. Try again.';
+    gameWinnerDiv.appendChild(declareWinner);
+    document.querySelector('#reset').style.display = 'block';
+    rockButton.removeEventListener('click', playerPicksRock);
+    paperButton.removeEventListener('click', playerPicksPaper);
+    scissorsButton.removeEventListener('click', playerPicksScissors);
+  } else {
+    console.log('Good Job! You like to inspect.');
+  }
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  ties = 0;
+  resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
+  roundWinner.textContent = '';
+  gameWinnerDiv.innerText = '';
+  rockButton.addEventListener('click', playerPicksRock);
+  paperButton.addEventListener('click', playerPicksPaper);
+  scissorsButton.addEventListener('click', playerPicksScissors);
+  document.querySelector('#reset').style.display = 'none';
 }
 
 rockButton.addEventListener('click', playerPicksRock);
 paperButton.addEventListener('click', playerPicksPaper);
 scissorsButton.addEventListener('click', playerPicksScissors);
+document.querySelector('#reset').addEventListener('click', resetGame);
 
 // Create a function that runs the previous function 5 times, keeps score, and declares a winner(this function destroyed me)
 /*

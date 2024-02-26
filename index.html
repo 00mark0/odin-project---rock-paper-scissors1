@@ -4,15 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors 1</title>
+    <link rel="stylesheet" href="./style.css" />
     <script src="./index.js" defer></script>
   </head>
   <body>
-    <h1>Rock Paper Scissors Revisited</h1>
-    <p>Play a game against the computer, first to 5!</p>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-
-    <div class="results"></div>
+    <header>
+      <h1>Rock Paper Scissors Revisited</h1>
+      <p>Play a game against the computer, first to 5!</p>
+    </header>
+    <main>
+      <figure>
+        <div class="choices">
+          <a href="#" id="rock">
+            <img
+              src="./img/icons8-rock-96.png"
+              alt="rock icon"
+              width="100"
+              height="100"
+            />
+          </a>
+          <a href="#" id="paper">
+            <img
+              src="./img/icons8-paper-96.png"
+              alt="paper icon"
+              width="100"
+              height="100"
+            />
+          </a>
+          <a href="#" id="scissors">
+            <img
+              src="./img/icons8-scissors-100.png"
+              alt="scissors icon"
+              width="100"
+              height="100"
+            />
+          </a>
+        </div>
+      </figure>
+      <div class="results"></div>
+      <div class="game-winner"></div>
+      <button id="reset">Play Again!</button>
+    </main>
+    <footer>M.R</footer>
   </body>
 </html>
