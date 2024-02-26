@@ -16,6 +16,8 @@ let resultCounter = document.createElement('span');
 resultCounter.textContent = `Wins: ${playerScore}; Losses: ${computerScore}; Ties: ${ties};`;
 let roundWinner = document.createElement('p');
 roundWinner.textContent = ``;
+roundWinner.style.marginBottom = '10px';
+roundWinner.style.fontSize = '18px';
 let gameWinnerDiv = document.querySelector('.game-winner');
 results.appendChild(roundWinner);
 results.appendChild(resultCounter);
